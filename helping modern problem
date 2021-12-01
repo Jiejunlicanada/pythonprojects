@@ -1,0 +1,27 @@
+import random 
+list_res=['spago','paul kitchen','penalty box','Jade']
+list_choice =[]
+
+def choose(list):
+    while True: 
+        food = random.choice(list)
+        judgment = input('how about [%s] ? if you agree, please press y. If not, please press entre. ' %(food))
+        if judgment == 'y':
+            print('Yeah! let go to [%s]'%(food))
+            break 
+                  
+reason = int(input('what is your thought right now : 1.don''t know where should go; 2.I have a list in my mind : '))
+if reason == 1: 
+    choose(list_res)
+elif reason == 2:
+    add = True 
+    while add:
+        choice = input('Please enter the name of the stores that makes you hesitate(one by one, enter y after completion : '))
+        if choice != 'y':
+            list_choice.append(choice) 
+        if choice =='y' : 
+            add = False 
+        choose(list_choice)
+else: 
+    print('Sorry, the third case is not currently supported-but you can add code.')
+        
