@@ -18,3 +18,27 @@ plt.ylabel('各省各月口罩订单量（百万）',fontsize=15)
 plt.legend(['其他', '广东', '江苏', '河南', '湖北', '湖南'])
 # 设置画布保存路径为'./工作/各省各月口罩订单量变化折线图.png'
 plt.savefig('./工作/各省各月口罩订单量变化折线图.png')
+
+
+
+# 生成画布，并设置画布的大小为(6, 6)
+plt.figure(figsize=(6,6))
+# 设置 x 坐标值为月份信息，y 坐标值为各月口罩平均单价
+x = mask_price.index
+y = mask_price.values
+# 绘制柱状图，调整柱子的样式，并区分 1 月份和 6 月份颜色
+plt.bar(x,height=y,color=['r','g','g','g','g','b'],alpha=0.9,width=0.5)
+# 设置图表标题名为'各月平均单价分布图'，字体大小为 20
+plt.title('各月平均单价分布图',fontsize=20)
+# 坐标轴的刻度字体大小为 12
+plt.xticks(fontsize=12)
+plt.yticks(fontsize=12)
+# 设置 x、y 轴标题分别为'月份'、'各月平均单价（元）'，字体大小均为 15
+plt.xlabel('月份',fontsize=15)
+plt.ylabel('各月平均单价（元）',fontsize=15)
+# 为柱子添加每一个数据标签，数值是 y 坐标值，并且只保留整数
+for a,b in zip(x,y):
+    plt.text(a,b,'%.0f' % b,ha='center',va='bottom',fontsize=10)
+
+# 设置画布保存路径为'./工作/各月平均单价分布图.png'
+plt.savefig('./工作/各月平均单价分布图.png')
